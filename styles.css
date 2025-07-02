@@ -17,9 +17,13 @@
 body {
     background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/10b13ce6-56bc-4b8a-82c4-20804cfe87b3/dhunfu2-d1a4300c-f8b8-4716-b129-933234509a82.jpg/v1/fill/w_1063,h_752,q_70,strp/bmth___nexgen_arg_wallpaper___light_by_sabinahemlock_dhunfu2-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjQ4MCIsInBhdGgiOiJcL2ZcLzEwYjEzY2U2LTU2YmMtNGI4YS04MmM0LTIwODA0Y2ZlODdiM1wvZGh1bmZ1Mi1kMWE0MzAwYy1mOGI4LTQ3MTYtYjEyOS05MzMyMzQ1MDlhODIuanBnIiwid2lkdGgiOiI8PTM1MDgifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Ds4yJ7UxE87nION94zOcODbdBZKkdIYBySyOSbHK1Y8);
     background-color: var(--main-bg-color);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-color);
     line-height: 1.6;
     font-weight: 300;
+    overflow-x: hidden;
 }
 
 header {
@@ -29,6 +33,7 @@ header {
     background-size: cover;
     background-position: center;
     height: 60vh;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,50 +43,56 @@ header {
 }
 
 h1 {
-    font-size: 4.5rem;
+    font-size: clamp(2rem, 8vw, 4.5rem);
     margin-bottom: 1rem;
     text-transform: uppercase;
-    letter-spacing: 8px;
+    letter-spacing: clamp(2px, 2vw, 8px);
     font-weight: 800;
     text-shadow: 0 0 15px #352e2e;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 h2 {
-    font-size: 2.2rem;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
     margin: 2rem 0 1.5rem 0;
     text-transform: uppercase;
     color: var(--accent-color);
-    letter-spacing: 4px;
+    letter-spacing: clamp(1px, 1vw, 4px);
     text-align: center;
     font-weight: 600;
     position: relative;
     display: inline-block;
     padding-bottom: 10px;
     border-bottom: 2px solid #352e2e;
+    word-wrap: break-word;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     margin: 1.5rem 0 1rem 0;
     color: var(--hover-color);
-    letter-spacing: 2px;
+    letter-spacing: clamp(1px, 0.5vw, 2px);
     font-weight: 600;
     text-transform: uppercase;
+    word-wrap: break-word;
 }
 
 section {
-    padding: 3rem 2rem;
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
     max-width: 1200px;
     margin: 1.5rem auto;
     background-color: var(--secondary-bg);
     border-left: 5px solid var(--accent-color);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    width: calc(100% - 2rem);
 }
 
 p {
     margin-bottom: 1.2rem;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     line-height: 1.8;
+    word-wrap: break-word;
 }
 
 ul {
@@ -98,6 +109,7 @@ a {
     transition: all 0.3s ease;
     font-weight: 500;
     position: relative;
+    word-break: break-word;
 }
 
 a:hover {
@@ -106,8 +118,8 @@ a:hover {
 
 .album-list, .top-albums {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+    gap: clamp(1rem, 3vw, 2.5rem);
     margin-top: 3rem;
 }
 
@@ -129,6 +141,7 @@ a:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
     transition: all 0.4s ease;
     border: 1px solid #222;
+    max-width: 100%;
 }
 
 .album-list img:hover, .top-albums img:hover {
@@ -138,29 +151,29 @@ a:hover {
 
 .top-albums li {
     position: relative;
-    padding: 1.2rem;
+    padding: clamp(0.8rem, 2vw, 1.2rem);
     background-color: #1a1a1a;
     border-radius: 4px;
     border-bottom: 3px solid var(--accent-color);
 }
 
 .top-albums li a {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: clamp(0.5px, 0.3vw, 1px);
 }
 
 .datos-curiosos {
     background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-    padding: 2.5rem;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
     border-radius: 4px;
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
 }
 
 .datos-curiosos li {
-    padding-left: 1.8rem;
+    padding-left: clamp(1.2rem, 3vw, 1.8rem);
     position: relative;
     line-height: 1.8;
 }
@@ -168,7 +181,7 @@ a:hover {
 .datos-curiosos li:before {
     content: "•";
     color: var(--accent-color);
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
     position: absolute;
     left: 0;
     top: -5px;
@@ -176,13 +189,13 @@ a:hover {
 
 .colaboraciones {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
 }
 
 .colaboraciones li {
     background-color: #1a1a1a;
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
     border-radius: 3px;
     border-left: 4px solid var(--accent-color);
     transition: all 0.3s ease;
@@ -202,27 +215,30 @@ nav {
     z-index: 1000;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     border-bottom: 1px solid #222;
+    width: 100%;
 }
 
 nav ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 1.2rem 0;
+    padding: clamp(0.8rem, 2vw, 1.2rem) 0;
+    margin: 0;
 }
 
 nav li {
-    margin: 0 1.2rem;
-    padding: 0.5rem 1rem;
+    margin: 0 clamp(0.5rem, 2vw, 1.2rem);
+    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 1rem);
     margin-bottom: 0;
 }
 
 nav a {
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
+    letter-spacing: clamp(1px, 0.5vw, 2px);
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     font-weight: 600;
     position: relative;
+    white-space: nowrap;
 }
 
 nav a:hover {
@@ -233,7 +249,7 @@ nav a:hover {
 .member-profile {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 3rem;
+    gap: clamp(1.5rem, 4vw, 3rem);
     align-items: start;
 }
 
@@ -243,6 +259,8 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     border: 1px solid #333;
     transition: all 0.3s ease;
+    max-width: 100%;
+    height: auto;
 }
 
 .member-image:hover {
@@ -251,7 +269,7 @@ nav a:hover {
 }
 
 .member-info {
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
     background-color: #1a1a1a;
     border-radius: 3px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -259,7 +277,7 @@ nav a:hover {
 
 .song-analysis {
     background-color: #1a1a1a;
-    padding: 2.5rem;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
     border-radius: 4px;
     margin-top: 2.5rem;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
@@ -270,44 +288,255 @@ nav a:hover {
 blockquote {
     font-style: italic;
     margin: 1.5rem 0;
-    padding: 1.5rem 2.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1.5rem, 4vw, 2.5rem);
     background: #111;
     border-left: 4px solid var(--accent-color);
     position: relative;
+    word-wrap: break-word;
 }
 
 .song-connection {
     margin-top: 2.5rem;
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
     background: linear-gradient(135deg, rgba(240, 240, 240, 0.1), rgba(0, 0, 0, 0.8));
     border-radius: 3px;
     border: 1px solid #222;
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-        letter-spacing: 4px;
+@media (max-width: 1024px) {
+    .album-list, .top-albums {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
     }
     
-    .album-list, .top-albums, .colaboraciones {
-        grid-template-columns: 1fr;
+    .colaboraciones {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    section {
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+    
+    header {
+        height: 50vh;
+        min-height: 300px;
+        padding: 2rem 1rem;
+    }
+    
+    h1 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        letter-spacing: clamp(1px, 1vw, 4px);
+    }
+    
+    h2 {
+        font-size: clamp(1.3rem, 4vw, 1.8rem);
+        margin: 1.5rem 0 1rem 0;
     }
     
     section {
         padding: 1.5rem 1rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
     }
     
-    header {
-        height: 45vh;
-        padding: 2rem;
+    .album-list, .top-albums, .colaboraciones {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
     }
     
     .member-profile {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    nav ul {
+        padding: 1rem 0;
+    }
+    
+    nav li {
+        margin: 0.25rem 0.5rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .datos-curiosos li {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) and (orientation: landscape) {
+    header {
+        height: 80vh;
+        min-height: 250px;
+    }
+    
+    h1 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 40vh;
+        min-height: 250px;
+        padding: 1.5rem 0.5rem;
+    }
+    
+    h1 {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+        letter-spacing: clamp(1px, 1vw, 3px);
+        margin-bottom: 0.5rem;
     }
     
     h2 {
-        font-size: 1.8rem;
+        font-size: clamp(1.2rem, 5vw, 1.5rem);
+        margin: 1rem 0 0.5rem 0;
+        letter-spacing: clamp(0.5px, 0.5vw, 2px);
+    }
+    
+    section {
+        padding: 1rem 0.5rem;
+        margin: 0.5rem;
+        width: calc(100% - 1rem);
+        border-left: 3px solid var(--accent-color);
+    }
+    
+    .album-list, .top-albums {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+    }
+    
+    .colaboraciones {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.8rem 0;
+    }
+    
+    nav li {
+        margin: 0.2rem 0;
+        padding: 0.3rem 0.6rem;
+        width: auto;
+    }
+    
+    nav a {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+    
+    .member-profile {
+        gap: 1rem;
+    }
+    
+    .top-albums li {
+        padding: 0.8rem;
+    }
+    
+    .datos-curiosos {
+        padding: 1.2rem;
+    }
+    
+    .datos-curiosos li {
+        padding-left: 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    blockquote {
+        padding: 1rem 1.2rem;
+        margin: 1rem 0;
+    }
+    
+    p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 320px) {
+    header {
+        height: 35vh;
+        min-height: 200px;
+        padding: 1rem 0.25rem;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+    }
+    
+    section {
+        padding: 0.8rem 0.3rem;
+        margin: 0.3rem;
+        width: calc(100% - 0.6rem);
+    }
+    
+    .album-list, .top-albums {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    nav ul {
+        padding: 0.5rem 0;
+    }
+    
+    nav li {
+        margin: 0.1rem 0;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    nav a {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    :root {
+        --text-color: #ffffff;
+        --accent-color: #ffffff;
+        --hover-color: #ffffff;
+    }
+    
+    section {
+        background-color: #000000;
+        border-left: 5px solid #ffffff;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .album-list, .top-albums {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .colaboraciones {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .album-list, .top-albums {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .colaboraciones {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
